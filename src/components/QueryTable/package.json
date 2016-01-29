@@ -1,0 +1,6 @@
+{
+  "name": "QueryTable",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./QueryTable.js"
+}

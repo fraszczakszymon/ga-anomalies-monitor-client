@@ -1,0 +1,6 @@
+{
+  "name": "QueryPage",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./QueryPage.js"
+}

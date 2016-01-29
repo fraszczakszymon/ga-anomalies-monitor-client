@@ -1,0 +1,33 @@
+$badge-color: #EF5350;
+
+.root {
+	color: rgba(255, 255, 255, .6);
+	display: block;
+	font-size: 1em;
+	padding: 1em 1.2em;
+	position: relative;
+	text-decoration: none;
+
+	&:hover {
+		background: #243644;
+		color: rgba(255, 255, 255, 1);
+	}
+
+	.badge {
+		background: $badge-color;
+		border-radius: 1em;
+		color: #fff;
+		font-size: 0.8em;
+		height: 2em;
+		line-height: 2em;
+		position: absolute;
+		right: 1.2em;
+		text-align: center;
+		top: 1em;
+		min-width: 2em;
+
+		&.wide {
+			padding: 0 0.4em;
+		}
+	}
+}

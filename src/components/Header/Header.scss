@@ -1,0 +1,55 @@
+@import '../variables.scss';
+
+$brand-color: #c7eefb;
+
+.root {
+	background: $header-background;
+	color: #fff;
+	height: $header-height;
+	left: 0;
+	position: fixed;
+	top: 0;
+	width: 20%;
+	box-shadow: inset 0 -10px 10px 0 rgba(0, 0, 0, 0.05);
+	overflow: hidden;
+}
+
+.container {
+	margin: 0 auto;
+	max-width: $max-content-width;
+}
+
+.brand {
+	color: color($brand-color lightness(+10%));
+	font-size: 1.5em;
+	line-height: $header-height;
+	text-decoration: none;
+}
+
+.brandTxt {
+	margin-left: 10px;
+}
+
+.nav {
+	float: right;
+	margin-top: 6px;
+}
+
+.banner {
+	text-align: center;
+}
+
+.bannerTitle {
+	font-size: 4em;
+	font-weight: normal;
+	line-height: 1em;
+	margin: 0;
+	padding: 10px;
+}
+
+.bannerDesc {
+	color: rgba(255, 255, 255, .5);
+	font-size: 1.25em;
+	margin: 0;
+	padding: 0;
+}

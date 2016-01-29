@@ -1,0 +1,65 @@
+@import '../variables.scss';
+
+.root {
+	background: #fff;
+	box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.05);
+	margin: 1em;
+	padding: 2em;
+	width: calc(100% - 6em);
+
+	table {
+		width: 100%;
+
+		thead {
+			border-bottom: 1px solid #D9D9D9;
+			tr {
+				th {
+					padding: 0.4em 0.8em;
+				}
+			}
+		}
+
+		tbody {
+			tr:hover {
+				background: #eee;
+			}
+
+			.exceeded {
+				font-weight: 700;
+			}
+
+			td {
+				color: #555;
+				font-size: 0.9em;
+				padding: 0.4em 0.8em;
+				text-align: center;
+				width: 20%;
+
+				&.flag {
+					color: #E53935;
+					padding: 0;
+					width: 2%;
+				}
+
+				&.date {
+					width: 18%;
+				}
+
+				&.change {
+					.up {
+						color: #689F38;
+					}
+					.down {
+						color: #E53935;
+					}
+
+					.arrow {
+						display: inline;
+						font-size: 0.8em;
+						margin: 0 0.4em;
+					}
+				}
+			}
+		}
+	}
+}

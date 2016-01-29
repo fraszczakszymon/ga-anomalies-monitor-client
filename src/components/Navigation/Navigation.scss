@@ -1,0 +1,13 @@
+@import '../variables.scss';
+
+$navigation-background: #30404F;
+
+.root {
+	background: $navigation-background;
+	display: inline;
+	height: calc(100% - 80px);
+	left: 0;
+	position: fixed;
+	top: $header-height;
+	width: 20%;
+}
