@@ -12,16 +12,16 @@ import React, { Component, PropTypes } from 'react';
 class Html extends Component {
 
 	static propTypes = {
-		title: PropTypes.string,
-		description: PropTypes.string,
-		css: PropTypes.string,
 		body: PropTypes.string.isRequired,
+		css: PropTypes.string,
+		description: PropTypes.string,
 		entry: PropTypes.string.isRequired,
+		title: PropTypes.string,
 	};
 
 	static defaultProps = {
-		title: '',
 		description: '',
+		title: '',
 	};
 
 	render() {

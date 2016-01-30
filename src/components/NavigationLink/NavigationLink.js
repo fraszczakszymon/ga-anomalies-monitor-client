@@ -8,12 +8,12 @@ import Link from '../Link';
 class NavigationLink extends Component {
 
 	static propTypes = {
-		className: PropTypes.string,
 		buildId: PropTypes.number,
-		queryId: PropTypes.string,
 		children: PropTypes.string,
-		selected: PropTypes.bool,
+		className: PropTypes.string,
 		errors: PropTypes.number,
+		selected: PropTypes.bool,
+		queryId: PropTypes.string,
 	};
 
 	render() {

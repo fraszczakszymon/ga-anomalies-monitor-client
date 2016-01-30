@@ -9,8 +9,8 @@ const title = 'Loading...';
 class BuildButton extends Component {
 
 	static propTypes = {
-		runBuild: PropTypes.func.isRequired,
 		className: PropTypes.string,
+		runBuild: PropTypes.func.isRequired,
 	};
 
 	render() {

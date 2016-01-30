@@ -20,11 +20,11 @@ $badge-color: #EF5350;
 		font-size: 0.8em;
 		height: 2em;
 		line-height: 2em;
+		min-width: 2em;
 		position: absolute;
 		right: 1.2em;
 		text-align: center;
 		top: 1em;
-		min-width: 2em;
 
 		&.wide {
 			padding: 0 0.4em;

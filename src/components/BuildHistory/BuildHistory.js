@@ -13,8 +13,8 @@ class BuildHistory extends Component {
 
 	static propTypes = {
 		builds: PropTypes.array.isRequired,
-		fetchBuild: PropTypes.func.isRequired,
 		className: PropTypes.string,
+		fetchBuild: PropTypes.func.isRequired,
 		params: PropTypes.object,
 	};
 

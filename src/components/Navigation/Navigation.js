@@ -23,9 +23,9 @@ class Navigation extends Component {
 					<ReactCSSTransitionGroup
 						transitionName="fade-in"
 						transitionAppear={true}
+						transitionAppearTimeout={10000}
 						transitionEnterTimeout={0}
-						transitionLeaveTimeout={0}
-						transitionAppearTimeout={10000}>
+						transitionLeaveTimeout={0}>
 						{this.props.build.queries.map((query) => {
 							return (
 								<NavigationLink

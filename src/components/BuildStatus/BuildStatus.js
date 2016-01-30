@@ -7,8 +7,8 @@ import withStyles from '../../decorators/withStyles';
 class BuildStatus extends Component {
 
 	static propTypes = {
-		status: PropTypes.number.isRequired,
 		className: PropTypes.string,
+		status: PropTypes.number.isRequired,
 	};
 
 	render() {

@@ -18,9 +18,9 @@ class QueryDetails extends Component {
 			<ReactCSSTransitionGroup
 				transitionName="fade-in"
 				transitionAppear={true}
+				transitionAppearTimeout={10000}
 				transitionEnterTimeout={0}
-				transitionLeaveTimeout={0}
-				transitionAppearTimeout={10000}>
+				transitionLeaveTimeout={0}>
 				<div className={s.root}>
 					<QueryChart query={this.props.query}/>
 					<QueryTable query={this.props.query}/>

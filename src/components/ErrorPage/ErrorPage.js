@@ -17,8 +17,8 @@ const title = 'Error';
 class ErrorPage extends Component {
 
 	static contextTypes = {
-		onSetTitle: PropTypes.func.isRequired,
 		onPageNotFound: PropTypes.func.isRequired,
+		onSetTitle: PropTypes.func.isRequired,
 	};
 
 	componentWillMount() {

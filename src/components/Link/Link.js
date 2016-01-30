@@ -22,9 +22,9 @@ function isModifiedEvent(event) {
 class Link extends Component {
 
 	static propTypes = {
+		onClick: PropTypes.func,
 		to: PropTypes.string.isRequired,
 		state: PropTypes.object,
-		onClick: PropTypes.func,
 	};
 
 	static handleClick = (event) => {

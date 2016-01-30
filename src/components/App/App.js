@@ -24,29 +24,29 @@ class App extends Component {
 	static propTypes = {
 		context: PropTypes.shape({
 			insertCss: PropTypes.func,
-			onSetTitle: PropTypes.func,
-			onSetMeta: PropTypes.func,
 			onPageNotFound: PropTypes.func,
+			onSetMeta: PropTypes.func,
+			onSetTitle: PropTypes.func,
 		}),
-		params: PropTypes.object,
 		children: PropTypes.object,
 		error: PropTypes.object,
+		params: PropTypes.object,
 	};
 
 	static childContextTypes = {
 		insertCss: PropTypes.func.isRequired,
-		onSetTitle: PropTypes.func.isRequired,
-		onSetMeta: PropTypes.func.isRequired,
 		onPageNotFound: PropTypes.func.isRequired,
+		onSetMeta: PropTypes.func.isRequired,
+		onSetTitle: PropTypes.func.isRequired,
 	};
 
 	constructor(props) {
 		super(props);
+		this.build = {};
+		this.builds = [];
 		this.state = {
 			loaded: false
 		};
-		this.builds = [];
-		this.build = {};
 	}
 
 	runBuild() {
@@ -91,9 +91,9 @@ class App extends Component {
 		const context = this.props.context;
 		return {
 			insertCss: context.insertCss || emptyFunction,
-			onSetTitle: context.onSetTitle || emptyFunction,
-			onSetMeta: context.onSetMeta || emptyFunction,
 			onPageNotFound: context.onPageNotFound || emptyFunction,
+			onSetMeta: context.onSetMeta || emptyFunction,
+			onSetTitle: context.onSetTitle || emptyFunction,
 		};
 	}
 
@@ -150,19 +150,19 @@ class App extends Component {
 		return (
 			<div>
 				<Navigation
-					className={s.nav}
 					build={this.build}
+					className={s.nav}
 					params={this.props.params}/>
 				<div className={s.content}>
 					<BuildPage
-						loaded={this.state.loaded}
 						build={this.build}
 						builds={this.builds}
-						queryId={this.props.params.queryId}
-						params={this.props.params}
-						runBuild={this.runBuild.bind(this)}
 						fetchBuild={this.fetchBuild.bind(this)}
-						onRefresh={this.refresh.bind(this)}/>
+						loaded={this.state.loaded}
+						onRefresh={this.refresh.bind(this)}
+						params={this.props.params}
+						queryId={this.props.params.queryId}
+						runBuild={this.runBuild.bind(this)}/>
 				</div>
 			</div>
 		);

@@ -11,11 +11,11 @@ import $ from 'jquery';
 class BuildHeader extends Component {
 
 	static propTypes = {
-		loaded: PropTypes.bool.isRequired,
-		runBuild: PropTypes.func.isRequired,
-		onRefresh: PropTypes.func.isRequired,
-		query: PropTypes.object,
 		build: PropTypes.object,
+		loaded: PropTypes.bool.isRequired,
+		onRefresh: PropTypes.func.isRequired,
+		runBuild: PropTypes.func.isRequired,
+		query: PropTypes.object,
 	};
 
 	renderQueryDetails() {
