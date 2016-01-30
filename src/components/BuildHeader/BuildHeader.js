@@ -4,6 +4,7 @@ import withStyles from '../../decorators/withStyles';
 import Loader from '../Loader';
 import RefreshButton from '../RefreshButton';
 import BuildButton from '../BuildButton';
+import BuildStatus from '../BuildStatus';
 import $ from 'jquery';
 
 @withStyles(s)
@@ -29,11 +30,10 @@ class BuildHeader extends Component {
 
 	renderBuildDetails() {
 		if (this.props.build.id) {
-			const buildStatus = this.props.build.status;
 			return (
 				<div className={s.build}>
 					<h3>
-						<div className={s['status'+buildStatus]}>•</div>
+						<BuildStatus status={this.props.build.status} className={s.status} />
 						Build #{this.props.build.id}
 					</h3>
 					<h5>{$.format.toBrowserTimeZone(this.props.build.date, "MMMM dd, HH:mm")}</h5>
