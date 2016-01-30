@@ -64,6 +64,10 @@ class App extends Component {
 			.then((responseText) => {
 				this.build = JSON.parse(responseText);
 				this.setState({loaded: true});
+
+				if (this.build.status === 1) {
+					setTimeout(this.refresh.bind(this), 2500);
+				}
 			})
 			.catch(() => {
 				this.setState({loaded: true});
@@ -128,7 +132,7 @@ class App extends Component {
 						...(parsePath('/build/' + buildId)),
 						state: this.props && this.props.state || null,
 					});
-					this.setState({loaded: true});
+					this.fetchBuild(buildId);
 				}
 			});
 	}
@@ -144,7 +148,9 @@ class App extends Component {
 
 		return (
 			<div>
-				<Navigation className={s.nav} build={this.build}/>
+				<Navigation
+					className={s.nav}
+					build={this.build}/>
 				<div className={s.content}>
 					<BuildPage
 						loaded={this.state.loaded}

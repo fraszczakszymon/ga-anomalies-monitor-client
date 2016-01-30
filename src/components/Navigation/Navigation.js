@@ -15,28 +15,36 @@ class Navigation extends Component {
 	};
 
 	render() {
+		if (this.props.build.queries && this.props.build.queries.length) {
+			return (
+				<div className={cx(s.root, this.props.className)} role="navigation">
+					<Header build={this.props.build}/>
+					<ReactCSSTransitionGroup
+						transitionName="fade-in"
+						transitionAppear={true}
+						transitionEnterTimeout={0}
+						transitionLeaveTimeout={0}
+						transitionAppearTimeout={10000}>
+						{this.props.build.queries.map((query) => {
+							return (
+								<NavigationLink
+									key={query.id}
+									className={s.link}
+									buildId={this.props.build.id}
+									queryId={query.id}
+									errors={query.errors}>
+									{query.title}
+								</NavigationLink>
+							)
+						})}
+					</ReactCSSTransitionGroup>
+				</div>
+			);
+		}
+
 		return (
 			<div className={cx(s.root, this.props.className)} role="navigation">
 				<Header build={this.props.build}/>
-				<ReactCSSTransitionGroup
-					transitionName="fade-in"
-					transitionAppear={true}
-					transitionEnterTimeout={0}
-					transitionLeaveTimeout={0}
-					transitionAppearTimeout={10000}>
-					{this.props.build.queries ? this.props.build.queries.map((query) => {
-						return (
-							<NavigationLink
-								key={query.id}
-								className={s.link}
-								buildId={this.props.build.id}
-								queryId={query.id}
-								errors={query.errors}>
-								{query.title}
-							</NavigationLink>
-						)
-					}) : null}
-				</ReactCSSTransitionGroup>
 			</div>
 		);
 	}
