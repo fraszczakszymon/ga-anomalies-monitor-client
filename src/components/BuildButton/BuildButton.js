@@ -9,13 +9,13 @@ const title = 'Loading...';
 class BuildButton extends Component {
 
 	static propTypes = {
+		runBuild: PropTypes.func.isRequired,
 		className: PropTypes.string,
-		onBuild: PropTypes.func,
 	};
 
 	render() {
 		return (
-			<div className={cx(s.root, this.props.className)}>
+			<div className={cx(s.root, this.props.className)} onClick={this.props.runBuild}>
 				<div className={s.icon}></div>
 			</div>
 		);

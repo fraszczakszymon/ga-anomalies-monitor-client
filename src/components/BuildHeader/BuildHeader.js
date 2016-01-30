@@ -12,6 +12,7 @@ class BuildHeader extends Component {
 
 	static propTypes = {
 		loaded: PropTypes.bool.isRequired,
+		runBuild: PropTypes.func.isRequired,
 		onRefresh: PropTypes.func.isRequired,
 		query: PropTypes.object,
 		build: PropTypes.object,
@@ -53,7 +54,7 @@ class BuildHeader extends Component {
 					}
 				</div>
 				<div className={s.icon}>
-					<BuildButton className={s.run} />
+					<BuildButton className={s.run} runBuild={this.props.runBuild} />
 				</div>
 				{this.renderBuildDetails()}
 			</div>

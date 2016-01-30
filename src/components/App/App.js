@@ -49,6 +49,14 @@ class App extends Component {
 		this.build = {};
 	}
 
+	runBuild() {
+		fetch(Api.url + Api.endpoint.build, {
+			method: 'POST'
+		}).then(() => {
+			this.refresh();
+		});
+	}
+
 	fetchBuild(id) {
 		this.setState({loaded: false});
 		fetch(Api.url + Api.endpoint.build + '/' + id)
@@ -143,6 +151,7 @@ class App extends Component {
 						build={this.build}
 						builds={this.builds}
 						queryId={this.props.params.queryId}
+						runBuild={this.runBuild.bind(this)}
 						fetchBuild={this.fetchBuild.bind(this)}
 						onRefresh={this.refresh.bind(this)}/>
 				</div>

@@ -12,6 +12,7 @@ class BuildPage extends Component {
 
 	static propTypes = {
 		loaded: PropTypes.bool.isRequired,
+		runBuild: PropTypes.func.isRequired,
 		onRefresh: PropTypes.func.isRequired,
 		fetchBuild: PropTypes.func.isRequired,
 		build: PropTypes.object,
@@ -40,6 +41,7 @@ class BuildPage extends Component {
 					loaded={this.props.loaded}
 					build={this.props.build}
 					query={query}
+					runBuild={this.props.runBuild}
 					onRefresh={this.props.onRefresh} />
 				{query ? <QueryDetails query={query}/> : null}
 				{ !query && this.props.build.id ?
