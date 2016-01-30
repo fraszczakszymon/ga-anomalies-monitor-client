@@ -1,0 +1,6 @@
+{
+  "name": "BuildPage",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./BuildPage.js"
+}

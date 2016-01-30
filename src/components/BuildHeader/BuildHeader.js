@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import s from './QueryHeader.scss';
+import s from './BuildHeader.scss';
 import withStyles from '../../decorators/withStyles';
 import Loader from '../Loader';
 import RefreshButton from '../RefreshButton';
@@ -7,7 +7,7 @@ import BuildButton from '../BuildButton';
 import $ from 'jquery';
 
 @withStyles(s)
-class QueryHeader extends Component {
+class BuildHeader extends Component {
 
 	static propTypes = {
 		loaded: PropTypes.bool.isRequired,
@@ -29,10 +29,11 @@ class QueryHeader extends Component {
 
 	renderBuildDetails() {
 		if (this.props.build.id) {
+			const buildStatus = this.props.build.status;
 			return (
 				<div className={s.build}>
 					<h3>
-						<div className={this.props.build.status === 0 ? s.done : s.pending}>•</div>
+						<div className={s['status'+buildStatus]}>•</div>
 						Build #{this.props.build.id}
 					</h3>
 					<h5>{$.format.toBrowserTimeZone(this.props.build.date, "MMMM dd, HH:mm")}</h5>
@@ -61,4 +62,4 @@ class QueryHeader extends Component {
 
 }
 
-export default QueryHeader;
+export default BuildHeader;

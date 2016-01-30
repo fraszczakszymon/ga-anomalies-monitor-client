@@ -12,7 +12,6 @@ import Router from 'react-routing/src/Router';
 import fetch from './core/fetch';
 import Api from './constants/Api';
 import App from './components/App';
-import QueryPage from './components/QueryPage';
 import NotFoundPage from './components/NotFoundPage';
 import ErrorPage from './components/ErrorPage';
 

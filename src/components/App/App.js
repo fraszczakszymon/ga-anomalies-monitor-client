@@ -13,7 +13,7 @@ import s from './App.scss';
 import fetch from '../../core/fetch';
 import Api from '../../constants/Api';
 import Navigation from '../Navigation';
-import QueryPage from '../QueryPage';
+import BuildPage from '../BuildPage';
 import parsePath from 'history/lib/parsePath';
 import Location from '../../core/Location';
 
@@ -54,7 +54,6 @@ class App extends Component {
 			.then((response) => response.text())
 			.then((responseText) => {
 				this.build = JSON.parse(responseText);
-				console.log(this.build);
 				this.setState({loaded: true});
 			})
 			.catch(() => {
@@ -138,9 +137,10 @@ class App extends Component {
 			<div>
 				<Navigation className={s.nav} build={this.build}/>
 				<div className={s.content}>
-					<QueryPage
+					<BuildPage
 						loaded={this.state.loaded}
 						build={this.build}
+						builds={this.builds}
 						queryId={this.props.params.queryId}
 						onRefresh={this.refresh.bind(this)}/>
 				</div>

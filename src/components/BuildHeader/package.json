@@ -1,0 +1,6 @@
+{
+  "name": "BuildHeader",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./BuildHeader.js"
+}

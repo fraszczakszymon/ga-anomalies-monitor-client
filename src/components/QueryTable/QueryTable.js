@@ -24,6 +24,7 @@ class QueryTable extends Component {
 
 	render() {
 		let previous = null;
+
 		return (
 			<div className={s.root}>
 				<table>

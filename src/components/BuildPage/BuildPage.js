@@ -1,18 +1,20 @@
 import React, { Component, PropTypes } from 'react';
-import s from './QueryPage.scss';
+import s from './BuildPage.scss';
 import withStyles from '../../decorators/withStyles';
-import QueryHeader from '../QueryHeader';
-import QueryChart from '../QueryChart';
+import BuildHeader from '../BuildHeader';
+import BuildDetails from '../BuildDetails';
+import QueryDetails from '../QueryDetails';
 import QueryTable from '../QueryTable';
 import $ from 'jquery';
 
 @withStyles(s)
-class QueryPage extends Component {
+class BuildPage extends Component {
 
 	static propTypes = {
 		loaded: PropTypes.bool.isRequired,
 		onRefresh: PropTypes.func.isRequired,
 		build: PropTypes.object,
+		builds: PropTypes.array,
 		queryId: PropTypes.string,
 	};
 
@@ -32,18 +34,17 @@ class QueryPage extends Component {
 	render() {
 		const query = this.getQuery();
 		return (
-			<div id="queryPage" className={s.root}>
-				<QueryHeader
+			<div className={s.root}>
+				<BuildHeader
 					loaded={this.props.loaded}
 					build={this.props.build}
 					query={query}
 					onRefresh={this.props.onRefresh} />
-				{query ? <QueryChart query={query}/> : null}
-				{query ? <QueryTable query={query}/> : null}
+				{query ? <QueryDetails query={query}/> : <BuildDetails build={this.build} builds={this.builds} />}
 			</div>
 		);
 	}
 
 }
 
-export default QueryPage;
+export default BuildPage;

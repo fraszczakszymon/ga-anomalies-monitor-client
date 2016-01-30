@@ -1,0 +1,6 @@
+{
+  "name": "BuildDetails",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./BuildDetails.js"
+}

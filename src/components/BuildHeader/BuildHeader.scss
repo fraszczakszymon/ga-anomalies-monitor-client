@@ -66,11 +66,11 @@
 				display: inline;
 				margin-right: 0.3em;
 
-				&.done {
+				&.status0 {
 					color: #7CB342;
 				}
 
-				&.pending {
+				&.status1 {
 					-webkit-animation-direction: normal;
 					-webkit-animation-duration: 2s;
 					-webkit-animation-iteration-count: infinite;
@@ -81,6 +81,10 @@
 					animation-iteration-count: infinite;
 					animation-name: blink;
 					animation-timing-function: ease;
+				}
+
+				&.status2 {
+					color: #EF5350;
 				}
 			}
 		}
