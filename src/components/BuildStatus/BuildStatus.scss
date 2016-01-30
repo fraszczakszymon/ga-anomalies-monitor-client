@@ -1,0 +1,46 @@
+@-webkit-keyframes blink {
+	0% {
+		color: rgba(0, 0, 0, 0.50);
+	}
+	50% {
+		color: rgba(0, 0, 0, 0.10);
+	}
+	100% {
+		color: rgba(0, 0, 0, 0.50);
+	}
+}
+
+@keyframes blink {
+	0% {
+		color: rgba(0, 0, 0, 0.50);
+	}
+	50% {
+		color: rgba(0, 0, 0, 0.10);
+	}
+	100% {
+		color: rgba(0, 0, 0, 0.50);
+	}
+}
+
+.root {
+	&.status0 {
+		color: #7CB342;
+	}
+
+	&.status1 {
+		-webkit-animation-direction: normal;
+		-webkit-animation-duration: 2s;
+		-webkit-animation-iteration-count: infinite;
+		-webkit-animation-name: blink;
+		-webkit-animation-timing-function: ease;
+		animation-direction: normal;
+		animation-duration: 2s;
+		animation-iteration-count: infinite;
+		animation-name: blink;
+		animation-timing-function: ease;
+	}
+
+	&.status2 {
+		color: #EF5350;
+	}
+}

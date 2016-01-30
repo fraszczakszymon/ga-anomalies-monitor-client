@@ -1,4 +1,13 @@
 @import '../variables.scss';
 
 .root {
+	.box {
+		background: #fff;
+		box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.05);
+		display: inline;
+		float: left;
+		margin: 1em;
+		padding: 2em;
+		width: calc(50% - 6em);
+	}
 }

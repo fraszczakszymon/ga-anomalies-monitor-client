@@ -50,6 +50,7 @@ class App extends Component {
 	}
 
 	fetchBuild(id) {
+		this.setState({loaded: false});
 		fetch(Api.url + Api.endpoint.build + '/' + id)
 			.then((response) => response.text())
 			.then((responseText) => {
@@ -62,6 +63,7 @@ class App extends Component {
 	}
 
 	fetchBuilds() {
+		this.setState({loaded: false});
 		return fetch(Api.url + Api.endpoint.build)
 			.then((response) => response.text())
 			.then((responseText) => {
@@ -110,7 +112,6 @@ class App extends Component {
 	}
 
 	refresh() {
-		this.setState({loaded: false});
 		this.fetchBuilds()
 			.then(() => {
 				const buildId = this.props.params.buildId;
@@ -142,6 +143,7 @@ class App extends Component {
 						build={this.build}
 						builds={this.builds}
 						queryId={this.props.params.queryId}
+						fetchBuild={this.fetchBuild.bind(this)}
 						onRefresh={this.refresh.bind(this)}/>
 				</div>
 			</div>

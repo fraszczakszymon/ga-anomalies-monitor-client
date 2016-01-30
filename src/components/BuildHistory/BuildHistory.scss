@@ -1,0 +1,35 @@
+@import '../variables.scss';
+
+.root {
+	h3 {
+		color: #555;
+		margin: 0 0 0.8em 0;
+	}
+	table {
+		width: 100%;
+
+		tr {
+			td {
+				font-size: 1.2em;
+				line-height: 1.6em;
+				padding: 0.3em 0.5em;
+
+				&.status {
+					font-size: 1.6em;
+					line-height: 1em;
+				}
+
+				&.date {
+					color: #777;
+					text-align: right;
+				}
+			}
+
+			&:hover {
+				background: #eee;
+				cursor: pointer;
+			}
+		}
+
+	}
+}

@@ -13,6 +13,7 @@ class BuildPage extends Component {
 	static propTypes = {
 		loaded: PropTypes.bool.isRequired,
 		onRefresh: PropTypes.func.isRequired,
+		fetchBuild: PropTypes.func.isRequired,
 		build: PropTypes.object,
 		builds: PropTypes.array,
 		queryId: PropTypes.string,
@@ -40,7 +41,14 @@ class BuildPage extends Component {
 					build={this.props.build}
 					query={query}
 					onRefresh={this.props.onRefresh} />
-				{query ? <QueryDetails query={query}/> : <BuildDetails build={this.build} builds={this.builds} />}
+				{query ? <QueryDetails query={query}/> : null}
+				{ !query && this.props.build.id ?
+					<BuildDetails
+						build={this.props.build}
+						builds={this.props.builds}
+						fetchBuild={this.props.fetchBuild} /> :
+					null
+				}
 			</div>
 		);
 	}
