@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import s from './BuildPage.scss';
 import withStyles from '../../decorators/withStyles';
 import BuildHeader from '../BuildHeader';
-import BuildDetails from '../BuildDetails';
+import BuildHistory from '../BuildHistory';
 import QueryDetails from '../QueryDetails';
 import QueryTable from '../QueryTable';
 import $ from 'jquery';
@@ -43,7 +43,7 @@ class BuildPage extends Component {
 					onRefresh={this.props.onRefresh} />
 				{query ? <QueryDetails query={query}/> : null}
 				{ !query && this.props.build.id ?
-					<BuildDetails
+					<BuildHistory
 						build={this.props.build}
 						builds={this.props.builds}
 						fetchBuild={this.props.fetchBuild} /> :

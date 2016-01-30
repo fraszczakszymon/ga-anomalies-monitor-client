@@ -30,7 +30,7 @@ class BuildHistory extends Component {
 				<h3>History</h3>
 				<table>
 					<tbody>
-					{this.props.builds.slice(0, 10).map((build) => {
+					{this.props.builds.map((build) => {
 						return (
 							<tr key={build.id} onClick={this.goToBuild.bind(this, build.id)}>
 								<td className={s.status}><BuildStatus status={build.status} /></td>
