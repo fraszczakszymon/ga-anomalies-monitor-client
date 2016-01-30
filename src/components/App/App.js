@@ -58,6 +58,7 @@ class App extends Component {
 	}
 
 	fetchBuild(id) {
+		this.build.queries = [];
 		this.setState({loaded: false});
 		fetch(Api.url + Api.endpoint.build + '/' + id)
 			.then((response) => response.text())

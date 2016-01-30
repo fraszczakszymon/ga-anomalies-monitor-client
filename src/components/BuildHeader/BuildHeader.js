@@ -29,15 +29,32 @@ class BuildHeader extends Component {
 		}
 	}
 
+	renderNumber(number) {
+		number = Math.floor(number);
+		if (number < 10) {
+			return '0' + number;
+		}
+
+		return '' + number;
+	}
+
+	renderDuration(duration) {
+		return this.renderNumber(duration/60) + ':' + this.renderNumber(duration%60);
+	}
+
 	renderBuildDetails() {
 		if (this.props.build.id) {
+			const duration = Math.round(this.props.build.duration / 1000);
 			return (
 				<div className={s.build}>
 					<h3>
 						<BuildStatus status={this.props.build.status} className={s.status} />
 						Build #{this.props.build.id}
 					</h3>
-					<h5>{$.format.toBrowserTimeZone(this.props.build.date, "MMMM dd, HH:mm")}</h5>
+					<h5>
+						{$.format.toBrowserTimeZone(this.props.build.date, "MMMM dd, HH:mm")},
+						duration: {this.renderDuration(duration)}
+					</h5>
 				</div>
 			)
 		}
