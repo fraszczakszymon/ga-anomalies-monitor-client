@@ -8,15 +8,19 @@ import Link from '../Link';
 class NavigationLink extends Component {
 
 	static propTypes = {
+		className: PropTypes.string,
 		buildId: PropTypes.number,
 		queryId: PropTypes.string,
 		children: PropTypes.string,
+		selected: PropTypes.bool,
 		errors: PropTypes.number,
 	};
 
 	render() {
 		return (
-			<Link className={s.root} to={"/build/" + this.props.buildId + "/query/" + this.props.queryId}>
+			<Link
+				className={cx(s.root, this.props.className, this.props.selected ? s.selected : null)}
+				to={"/build/" + this.props.buildId + "/query/" + this.props.queryId}>
 				{this.props.children}
 				{
 					this.props.errors > 0 ?

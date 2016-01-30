@@ -11,12 +11,13 @@ import $ from 'jquery';
 class BuildPage extends Component {
 
 	static propTypes = {
-		loaded: PropTypes.bool.isRequired,
-		runBuild: PropTypes.func.isRequired,
-		onRefresh: PropTypes.func.isRequired,
 		fetchBuild: PropTypes.func.isRequired,
+		loaded: PropTypes.bool.isRequired,
+		onRefresh: PropTypes.func.isRequired,
+		runBuild: PropTypes.func.isRequired,
 		build: PropTypes.object,
 		builds: PropTypes.array,
+		params: PropTypes.object,
 		queryId: PropTypes.string,
 	};
 
@@ -38,17 +39,18 @@ class BuildPage extends Component {
 		return (
 			<div className={s.root}>
 				<BuildHeader
-					loaded={this.props.loaded}
 					build={this.props.build}
-					query={query}
+					loaded={this.props.loaded}
+					onRefresh={this.props.onRefresh}
 					runBuild={this.props.runBuild}
-					onRefresh={this.props.onRefresh} />
+					query={query} />
 				{query ? <QueryDetails query={query}/> : null}
 				{ !query && this.props.build.id ?
 					<BuildHistory
+						fetchBuild={this.props.fetchBuild}
 						build={this.props.build}
 						builds={this.props.builds}
-						fetchBuild={this.props.fetchBuild} /> :
+						params={this.props.params} /> :
 					null
 				}
 			</div>

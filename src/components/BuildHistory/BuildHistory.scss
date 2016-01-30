@@ -17,6 +17,13 @@
 		width: 100%;
 
 		tr {
+			&.selected {
+				font-weight: 700;
+				td.status {
+					font-weight: 500;
+				}
+			}
+
 			td {
 				font-size: 1.2em;
 				line-height: 1.6em;

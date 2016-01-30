@@ -8,7 +8,7 @@ $badge-color: #EF5350;
 	position: relative;
 	text-decoration: none;
 
-	&:hover {
+	&:hover, &.selected {
 		background: #243644;
 		color: rgba(255, 255, 255, 1);
 	}

@@ -150,13 +150,15 @@ class App extends Component {
 			<div>
 				<Navigation
 					className={s.nav}
-					build={this.build}/>
+					build={this.build}
+					params={this.props.params}/>
 				<div className={s.content}>
 					<BuildPage
 						loaded={this.state.loaded}
 						build={this.build}
 						builds={this.builds}
 						queryId={this.props.params.queryId}
+						params={this.props.params}
 						runBuild={this.runBuild.bind(this)}
 						fetchBuild={this.fetchBuild.bind(this)}
 						onRefresh={this.refresh.bind(this)}/>

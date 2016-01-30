@@ -15,6 +15,7 @@ class BuildHistory extends Component {
 		builds: PropTypes.array.isRequired,
 		fetchBuild: PropTypes.func.isRequired,
 		className: PropTypes.string,
+		params: PropTypes.object,
 	};
 
 	goToBuild(id) {
@@ -30,16 +31,19 @@ class BuildHistory extends Component {
 			<ReactCSSTransitionGroup
 				transitionName="fade-in"
 				transitionAppear={true}
+				transitionAppearTimeout={10000}
 				transitionEnterTimeout={0}
-				transitionLeaveTimeout={0}
-				transitionAppearTimeout={10000}>
+				transitionLeaveTimeout={0}>
 				<div className={cx(s.root, this.props.className)}>
 					<h3>History</h3>
 						<table>
 							<tbody>
 							{this.props.builds.map((build) => {
 								return (
-									<tr key={build.id} onClick={this.goToBuild.bind(this, build.id)}>
+									<tr
+										className={this.props.params.buildId == build.id ? s.selected : null}
+										key={build.id}
+										onClick={this.goToBuild.bind(this, build.id)}>
 										<td className={s.status}><BuildStatus status={build.status} /></td>
 										<td>Build #{build.id}</td>
 										<td className={s.date}>{$.format.toBrowserTimeZone(build.date)}</td>

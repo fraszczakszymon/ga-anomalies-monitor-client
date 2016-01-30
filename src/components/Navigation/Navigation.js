@@ -12,6 +12,7 @@ class Navigation extends Component {
 	static propTypes = {
 		className: PropTypes.string,
 		build: PropTypes.object,
+		params: PropTypes.object,
 	};
 
 	render() {
@@ -30,6 +31,7 @@ class Navigation extends Component {
 								<NavigationLink
 									key={query.id}
 									className={s.link}
+									selected={this.props.params.queryId === query.id}
 									buildId={this.props.build.id}
 									queryId={query.id}
 									errors={query.errors}>
