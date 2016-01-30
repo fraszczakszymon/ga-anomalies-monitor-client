@@ -14,6 +14,8 @@ import fetch from '../../core/fetch';
 import Api from '../../constants/Api';
 import Navigation from '../Navigation';
 import QueryPage from '../QueryPage';
+import parsePath from 'history/lib/parsePath';
+import Location from '../../core/Location';
 
 const title = 'GA Anomalies Monitor';
 
@@ -43,14 +45,30 @@ class App extends Component {
 		this.state = {
 			loaded: false
 		};
+		this.builds = [];
 		this.build = {};
 	}
 
-	fetchData() {
-		fetch(Api.url + Api.endpoint.build)
+	fetchBuild(id) {
+		fetch(Api.url + Api.endpoint.build + '/' + id)
 			.then((response) => response.text())
 			.then((responseText) => {
 				this.build = JSON.parse(responseText);
+				console.log(this.build);
+				this.setState({loaded: true});
+			})
+			.catch(() => {
+				this.setState({loaded: true});
+			});
+	}
+
+	fetchBuilds() {
+		return fetch(Api.url + Api.endpoint.build)
+			.then((response) => response.text())
+			.then((responseText) => {
+				this.builds = JSON.parse(responseText);
+			})
+			.catch(() => {
 				this.setState({loaded: true});
 			});
 	}
@@ -70,11 +88,41 @@ class App extends Component {
 	}
 
 	componentDidMount() {
-		this.fetchData();
+		this.fetchBuilds()
+			.then(() => {
+				const id = this.props.params.buildId || this.builds[0].id;
+				let path = '/build/' + id;
+
+				if (this.props.params.queryId) {
+					path += '/query/' + this.props.params.queryId;
+				}
+
+				Location.push({
+					...(parsePath(path)),
+					state: this.props && this.props.state || null,
+				});
+
+				return this.fetchBuild(id);
+			})
 	}
 
 	componentWillUnmount() {
 		this.removeCss();
+	}
+
+	refresh() {
+		this.setState({loaded: false});
+		this.fetchBuilds()
+			.then(() => {
+				const buildId = this.props.params.buildId;
+				if (buildId) {
+					Location.push({
+						...(parsePath('/build/' + buildId)),
+						state: this.props && this.props.state || null,
+					});
+					this.setState({loaded: true});
+				}
+			});
 	}
 
 	render() {
@@ -93,7 +141,8 @@ class App extends Component {
 					<QueryPage
 						loaded={this.state.loaded}
 						build={this.build}
-						queryId={this.props.params.queryId}/>
+						queryId={this.props.params.queryId}
+						onRefresh={this.refresh.bind(this)}/>
 				</div>
 			</div>
 		);

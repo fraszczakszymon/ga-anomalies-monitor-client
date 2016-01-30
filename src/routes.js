@@ -21,6 +21,10 @@ const router = new Router(on => {
 		return <App context={state.context} params={state.params}/>;
 	});
 
+	on('/build/:buildId', async (state) => {
+		return <App context={state.context} params={state.params}/>;
+	});
+
 	on('/build/:buildId/query/:queryId', async (state) => {
 		return <App context={state.context} params={state.params}/>;
 	});

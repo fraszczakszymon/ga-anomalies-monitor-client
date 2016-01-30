@@ -92,9 +92,26 @@
 		}
 	}
 
-	.loader {
+	.icon {
 		display: inline;
 		float: right;
-		margin: 1.2em;
+		height: $header-height;
+		width: $header-height;
+
+		.loader {
+			display: inline;
+			float: right;
+			margin: 23px;
+		}
+
+		.refresh {
+			display: inline;
+			float: right;
+		}
+
+		.run {
+			display: inline;
+			float: right;
+		}
 	}
 }

@@ -4,12 +4,14 @@ import withStyles from '../../decorators/withStyles';
 import QueryHeader from '../QueryHeader';
 import QueryChart from '../QueryChart';
 import QueryTable from '../QueryTable';
+import $ from 'jquery';
 
 @withStyles(s)
 class QueryPage extends Component {
 
 	static propTypes = {
 		loaded: PropTypes.bool.isRequired,
+		onRefresh: PropTypes.func.isRequired,
 		build: PropTypes.object,
 		queryId: PropTypes.string,
 	};
@@ -30,10 +32,14 @@ class QueryPage extends Component {
 	render() {
 		const query = this.getQuery();
 		return (
-			<div className={s.root}>
-				<QueryHeader loaded={this.props.loaded} build={this.props.build} query={query}/>
-				{this.props.loaded && query ? <QueryChart query={query}/> : null}
-				{this.props.loaded && query ? <QueryTable query={query}/> : null}
+			<div id="queryPage" className={s.root}>
+				<QueryHeader
+					loaded={this.props.loaded}
+					build={this.props.build}
+					query={query}
+					onRefresh={this.props.onRefresh} />
+				{query ? <QueryChart query={query}/> : null}
+				{query ? <QueryTable query={query}/> : null}
 			</div>
 		);
 	}

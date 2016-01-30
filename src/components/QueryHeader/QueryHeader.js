@@ -2,6 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import s from './QueryHeader.scss';
 import withStyles from '../../decorators/withStyles';
 import Loader from '../Loader';
+import RefreshButton from '../RefreshButton';
+import BuildButton from '../BuildButton';
 import $ from 'jquery';
 
 @withStyles(s)
@@ -9,6 +11,7 @@ class QueryHeader extends Component {
 
 	static propTypes = {
 		loaded: PropTypes.bool.isRequired,
+		onRefresh: PropTypes.func.isRequired,
 		query: PropTypes.object,
 		build: PropTypes.object,
 	};
@@ -42,8 +45,16 @@ class QueryHeader extends Component {
 		return (
 			<div className={s.root}>
 				{this.renderQueryDetails()}
+				<div className={s.icon}>
+					{!this.props.loaded ?
+						<Loader className={s.loader}/> :
+						<RefreshButton className={s.refresh} onRefresh={this.props.onRefresh} />
+					}
+				</div>
+				<div className={s.icon}>
+					<BuildButton className={s.run} />
+				</div>
 				{this.renderBuildDetails()}
-				{!this.props.loaded ? <Loader className={s.loader}/> : null}
 			</div>
 		);
 	}

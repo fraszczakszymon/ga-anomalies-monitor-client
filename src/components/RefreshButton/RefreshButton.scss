@@ -1,0 +1,26 @@
+@import '../variables.scss';
+
+$icon-size: 40px;
+
+.root {
+	height: $header-height;
+	text-align: center;
+	vertical-align: middle;
+	width: $header-height;
+
+	&:hover {
+		background: #eee;
+		cursor: pointer;
+	}
+
+	.icon {
+		background-image: url('./icon-refresh.svg');
+		background-size: $icon-size;
+		display: inline;
+		float: left;
+		height: $icon-size;
+		margin: 20px;
+		opacity: 0.5;
+		width: $icon-size;
+	}
+}

@@ -16,7 +16,7 @@ class Navigation extends Component {
 	render() {
 		return (
 			<div className={cx(s.root, this.props.className)} role="navigation">
-				<Header />
+				<Header build={this.props.build} />
 				{this.props.build.queries ? this.props.build.queries.map((query) => {
 					return (
 						<NavigationLink

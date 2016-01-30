@@ -12,15 +12,12 @@ class QueryTable extends Component {
 	};
 
 	renderChange(change) {
-		const type = change > 0 ? s.up : s.down;
+		const type = change == 0 ? s.none : change > 0 ? s.up : s.down;
 		const arrow = change > 0 ? "▲" : "▼";
-		if (change === null) {
-			return "-";
-		}
 		return (
 			<div className={type}>
 				<div className={s.arrow}>{arrow}</div>
-				{change + "%"}
+				{change ? change.toFixed(2) + "%" : "-"}
 			</div>
 		)
 	}
@@ -43,8 +40,10 @@ class QueryTable extends Component {
 					<tbody>
 					{this.props.query.data.map((row, i) => {
 						let change = null;
-						if (previous !== null) {
-							change = parseFloat(Math.round(10000 * (row.value - previous) / row.value) / 100).toFixed(2);
+						if (previous !== null && row.value) {
+							change = parseFloat(Math.round(10000 * (row.value - previous) / row.value) / 100);
+						} else {
+							change = 0;
 						}
 						previous = row.value;
 						return (

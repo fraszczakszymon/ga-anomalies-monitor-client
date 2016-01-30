@@ -58,6 +58,13 @@
 						font-size: 0.8em;
 						margin: 0 0.4em;
 					}
+
+					.none {
+						color: #555;
+						.arrow {
+							display: none;
+						}
+					}
 				}
 			}
 		}

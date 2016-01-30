@@ -1,0 +1,6 @@
+{
+  "name": "BuildButton",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./BuildButton.js"
+}
