@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import cx from 'classnames';
 import s from './BuildHistory.scss';
 import withStyles from '../../decorators/withStyles';
@@ -26,22 +27,29 @@ class BuildHistory extends Component {
 
 	render() {
 		return (
-			<div className={cx(s.root, this.props.className)}>
-				<h3>History</h3>
-				<table>
-					<tbody>
-					{this.props.builds.map((build) => {
-						return (
-							<tr key={build.id} onClick={this.goToBuild.bind(this, build.id)}>
-								<td className={s.status}><BuildStatus status={build.status} /></td>
-								<td>Build #{build.id}</td>
-								<td className={s.date}>{$.format.toBrowserTimeZone(build.date)}</td>
-							</tr>
-						);
-					})}
-					</tbody>
-				</table>
-			</div>
+			<ReactCSSTransitionGroup
+				transitionName="fade-in"
+				transitionAppear={true}
+				transitionEnterTimeout={0}
+				transitionLeaveTimeout={0}
+				transitionAppearTimeout={10000}>
+				<div className={cx(s.root, this.props.className)}>
+					<h3>History</h3>
+						<table>
+							<tbody>
+							{this.props.builds.map((build) => {
+								return (
+									<tr key={build.id} onClick={this.goToBuild.bind(this, build.id)}>
+										<td className={s.status}><BuildStatus status={build.status} /></td>
+										<td>Build #{build.id}</td>
+										<td className={s.date}>{$.format.toBrowserTimeZone(build.date)}</td>
+									</tr>
+								);
+							})}
+							</tbody>
+						</table>
+				</div>
+			</ReactCSSTransitionGroup>
 		);
 	}
 

@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import s from './QueryDetails.scss';
 import withStyles from '../../decorators/withStyles';
 import BuildHeader from '../BuildHeader';
@@ -14,10 +15,17 @@ class QueryDetails extends Component {
 
 	render() {
 		return (
-			<div className={s.root}>
-				<QueryChart query={this.props.query}/>
-				<QueryTable query={this.props.query}/>
-			</div>
+			<ReactCSSTransitionGroup
+				transitionName="fade-in"
+				transitionAppear={true}
+				transitionEnterTimeout={0}
+				transitionLeaveTimeout={0}
+				transitionAppearTimeout={10000}>
+				<div className={s.root}>
+					<QueryChart query={this.props.query}/>
+					<QueryTable query={this.props.query}/>
+				</div>
+			</ReactCSSTransitionGroup>
 		);
 	}
 
