@@ -23,7 +23,7 @@ class QueryTable extends Component {
 	}
 
 	render() {
-		let previous = null;
+		const reversedData = $.extend([], this.props.query.data).reverse();
 
 		return (
 			<div className={s.root}>
@@ -39,14 +39,7 @@ class QueryTable extends Component {
 					</tr>
 					</thead>
 					<tbody>
-					{this.props.query.data.map((row, i) => {
-						let change = null;
-						if (previous !== null && row.value) {
-							change = parseFloat(Math.round(10000 * (row.value - previous) / row.value) / 100);
-						} else {
-							change = 0;
-						}
-						previous = row.value;
+					{reversedData.map((row, i) => {
 						return (
 							<tr key={i} className={row.exceeded ? s.exceeded : null}>
 								<td className={s.flag}>{row.exceeded ? "✖" : null}</td>
@@ -54,7 +47,7 @@ class QueryTable extends Component {
 								<td className={s.value}>{row.value}</td>
 								<td className={s.value}>{row.forecast}</td>
 								<td className={s.error}>{Math.round(row.error * -1)}</td>
-								<td className={s.change}>{this.renderChange(change)}</td>
+								<td className={s.change}>{this.renderChange(row.change)}</td>
 							</tr>
 						);
 					})}
