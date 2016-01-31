@@ -19,7 +19,7 @@
     "deploy": "babel-node tools/run deploy",
     "dev": "babel-node tools/run start",
     "restart": "npm stop && npm start",
-    "start": "npm run build -- --releas && node ./node_modules/forever/bin/forever start build/server.js",
+    "start": "npm run build -- --release && node ./node_modules/forever/bin/forever start build/server.js",
     "status": "node ./node_modules/forever/bin/forever list",
     "stop": "node ./node_modules/forever/bin/forever stop build/server.js"
   },
