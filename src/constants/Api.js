@@ -1,5 +1,7 @@
+import config from '../config/config.json'
+
 export default {
-	"url": "http://localhost:8081/",
+	"url": config.server.protocol + "://" + config.server.hostname + ":" + config.server.port + "/",
 	"endpoint": {
 		"build": "build"
 	}

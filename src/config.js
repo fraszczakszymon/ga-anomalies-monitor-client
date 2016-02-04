@@ -7,5 +7,7 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
-export const port = process.env.PORT || 5000;
-export const host = process.env.WEBSITE_HOSTNAME || `localhost:${port}`;
+import config from './config/config.json'
+
+export const port = config.port || 5000;
+export const host = config.hostname || `localhost:${port}`;
