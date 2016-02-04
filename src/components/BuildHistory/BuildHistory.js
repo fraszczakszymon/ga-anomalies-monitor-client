@@ -38,7 +38,7 @@ class BuildHistory extends Component {
 					<h3>History</h3>
 						<table>
 							<tbody>
-							{this.props.builds.map((build) => {
+							{this.props.builds.slice(0, 48).map((build) => {
 								return (
 									<tr
 										className={this.props.params.buildId == build.id ? s.selected : null}
